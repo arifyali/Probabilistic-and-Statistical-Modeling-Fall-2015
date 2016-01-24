@@ -1,0 +1,50 @@
+###############################
+
+# Practice problems for class of 09/02/15 
+ 
+###############################
+
+Practice problems for round-off behavior
+
+Find the largest number of the form  10^x, where x is a positive integer, that is still represented as a number by R.
+
+Find the largest number of the form z = y*10^x, where  x  and  y  are positive integers, that is still represented as a number by R.
+
+Let  z  be the number from the previous question. What is the result of computing 1.1*z? How about 2*z? Explain to yourself what is going on.
+
+The largest number that can be represented on your machine can be obtained with the command
+.Machine$double.xmax
+
+Don't forget the .  in front of Machine.
+
+What happens if you add  1  or  10^10  or 10^100 to this value? Predict what happens before you try it out.
+What happens if you multify this value by 1.01? Try to predict what happens before you try it out.
+
+Try to find out the value of the smallest real positive number that can be represented on your machine. It's an element of the list of the list .Machine.
+
+The quantity eps0 = .Machine$double.eps  is known as "machine epsilon". Essentially, this is the order of magnitude of the relative round-off our that you can always expect. 
+Verify that the smallest real number larger than one that is represented by your computer equals  1 + eps0 and that the next largest real number that is represented is  1 + 2*eps0.. You can check this by computing expressions like (1+x) - 1, where  x a bit smaller or larger than eps0.
+
+Simulations
+
+Write a function  mytrials()  that takes input arguments  n  (a positive integer) and  p  (between 0 and 1). It should simulate the number of successes if somebody carries out  n  independent trials, each of which has a success probability p. The function should only use mytoss() and a suitable for loop. The built-in R command rbinom(1,n,p) does the exact same thing, but you should not use it.
+
+How many microseconds per function call to mytrials(), if n = 10 amd p = .2?
+
+How many microseconds per function called to rbinom(10,.2), which does the same thing?
+
+Try to explain the difference between the two times.
+
+Negative binomial distribution
+
+Look up material about the negative binomial distribution. What is used for? What are its parameters? What are the main assumptions to apply it?
+What is its mean? How does that result relate to material covered in yesterday's class? What is its variance?
+
+Write a few lines of  R  code to simulate the number of tries needed to get to  k  successes, if the success probability is  p. Your code should allow you to carry out  N  simulations. It should use calls to rnbinom. 
+Can you do this in one single short line of code? Look up the R documentation for rnbinom.
+
+Assessing Bias and Spread
+
+Fix  k = 5  and  p = .4. Estimate the bias of the plug-in estimate p-hat , using a sufficiently large number of simulations. Compare this to the plot for the bias that appears in the course slides for September 2.
+
+Use the simulated data from the previous exercise. Make box plots and histograms of the plug-in estimates. How do these plots differ from the case  k = 1 that was done in class? Can you give an intuitive explanation for the difference?

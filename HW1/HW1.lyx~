@@ -1,0 +1,320 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Analytics 511 Homework 1
+\end_layout
+
+\begin_layout Author
+Arif Ali
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note: R code is located after the written solutions in Appendix
+\end_layout
+
+\begin_layout Section*
+Problem 1
+\end_layout
+
+\begin_layout Itemize
+a = 9
+\end_layout
+
+\begin_layout Itemize
+b = 28.4605
+\end_layout
+
+\begin_layout Itemize
+c = 17
+\end_layout
+
+\begin_layout Itemize
+d = 23409
+\end_layout
+
+\begin_layout Section*
+Problem 2
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+As p increases, myattempts system times tend to go down whereas rgeom remained
+ about the same regardless of the p input.
+ This is probably because rgeom is a built in function within R.
+\end_layout
+
+\begin_layout Section*
+Problem 3
+\end_layout
+
+\begin_layout Standard
+Some noticable observations is that when p = 0.01, the difference between
+ the estimated standard deviation and the bulit in one is greater by approximate
+ly 2.
+ However, as p increases the difference is less.
+ Please see R code in the appendix.
+ 
+\end_layout
+
+\begin_layout Section*
+Problem 4
+\end_layout
+
+\begin_layout Standard
+Please see R code in the appendix.
+\end_layout
+
+\begin_layout Section*
+Problem 5
+\end_layout
+
+\begin_layout Standard
+The main argument against SAS is that in order to use SAS, the user has
+ to pay an expensive fee.
+ While many larger companies can afford to pay for the license, individuals
+ in smaller organizations are at a disadvantage.
+ Since R is open sourced and free, many individuals across different disciplines
+ and organizations can collaborate to make it better whereas the updates
+ to SAS are controlled mainly by one company.
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+However, because of this one organization, the syntax behind SAS is more
+ uniformed when compared to R, especially with respect to packages.
+ In addition, in R there are multiple ways to do the same thing, which can
+ be confusing when collarborating with different individuals or groups.
+ This actually can impede learning R because the lack of central control
+ of syntax means basic structures are just good practice instead of a requiremen
+t.
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+In terms of technique, both blogs cited tend to agree that R is more robust.
+ While analysis done in SAS can be done in R, the converse isn't true.
+ However, R is still not as favored among big companies as SAS is mainly
+ because of a culture aspect.
+ So while R is both free and more robust, SAS has more industry backing.
+ The one noticable conclusion is that most of these blog posts actually
+ tend to conclude both are worth knowing; the comment sections tend to be
+ where the debate of which is better is.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Sources:
+\end_layout
+
+\begin_layout Itemize
+http://thomaswdinsmore.com/2014/12/15/sas-versus-r-part-two/
+\end_layout
+
+\begin_layout Itemize
+http://www.r-bloggers.com/sas-vs-r-the-right-answer-to-the-wrong-question/
+\end_layout
+
+\begin_layout Section*
+Problem 6
+\end_layout
+
+\begin_layout Subsection*
+Part A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(in\: Sample)=\frac{1000}{100*10^{6}}=1*10^{-5}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Part B
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(not\: In\: Any\: Of\:2000\: Samples)=\left(\frac{100*10^{6}-1000}{100*10^{6}}\right)^{2000}\approx0.98
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Part C
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(at\: Least\: One\: Sample)=1-P(not\: In\: Any\: Sample)=1-\left(\frac{100*10^{6}-1000}{100*10^{6}}\right)^{n}=0.50\Longrightarrow
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\frac{100*10^{6}-1000}{100*10^{6}}\right)^{n}=0.50\Longrightarrow n=69315
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Problem 7
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+A plug-in estimator for p requires generating data from rgenom.
+ From the data we are able to determine the mean of the square of results
+ from the data denoted as A.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{p}=\frac{\sqrt{1+8A}-1}{2A}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+Approximately, 77.6% of the estimated phats are greater than the original
+ p meaning that there is a positive bias.
+ The average of those phats is greater than p = .3 by approxmiately 0.21if
+ we assume every undefined value of phat (2A=0) is converted to 0.
+\end_layout
+
+\begin_layout Section*
+Problem 8
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E(\hat{X}_{6})=0.01560057
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Bonus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E(X_{i})=\left(\frac{1}{2}\right)^{i}\therefore E(X_{6})=\left(\frac{1}{2}\right)^{6}=0.015625\; and\: E(X_{4})=\left(\frac{1}{2}\right)^{4}=0.0625
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+Please see next page.
+\end_layout
+
+\end_body
+\end_document

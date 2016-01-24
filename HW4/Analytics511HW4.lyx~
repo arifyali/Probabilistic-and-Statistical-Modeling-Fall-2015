@@ -1,0 +1,368 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Analytic 511 Homework 4
+\end_layout
+
+\begin_layout Section*
+Excerise 25
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename HW4Problem25.jpeg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+summary(Problem25) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#Min.
+  1st Qu.
+   Median     Mean  3rd Qu.
+     Max.
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+#44      294      701   209800     3151 32220000 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Excerise 26
+\end_layout
+
+\begin_layout Paragraph*
+
+\series medium
+The Proposed modification is to bet 6 times after losing a bet twice; otherwise,
+ successive bets in the event of a previous winning bet should follow the
+ same logic as the original St.
+ Petersburg system.
+\end_layout
+
+\begin_layout Standard
+The logic 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(LLL)=\left(\frac{2}{3}\right)^{3}=\frac{8}{27}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(W|LL)=\frac{P(WLL)}{P(LL)}=\frac{\left(\frac{2}{3}\right)^{2}*\frac{1}{3}}{\left(\frac{2}{3}\right)^{2}}=\frac{1}{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E(LLW)=-1*\frac{2}{3}-1*\frac{2}{3}+6*\frac{1}{3}=2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Basically the idea is that the chances of a losing steak dimishes over the
+ long run; thus, at the point of losing steak, betting more may cause the
+ Expected gain to level out as the probabily of a continued L over L dimishes
+ over time.
+ The idea being while 
+\begin_inset Formula $P(L|LL)=\frac{2}{3}$
+\end_inset
+
+, the event that n loses in a row occurs will significantly lessen.
+ The up side being, if the guy has a bad losing streak, the game ends faster.
+\end_layout
+
+\begin_layout Section*
+Excerise 27
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(RE)=\frac{8}{38}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(BO)=\frac{8}{38}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(RO)=\frac{10}{38}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(BE\&0\&00)=\frac{12}{38}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E(X)=\frac{8}{38}*0+\frac{8}{38}*0+\frac{10}{38}*2-\frac{12}{38}*-2=-\frac{4}{38}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Excerise 28
+\end_layout
+
+\begin_layout Standard
+False, at the edges and corners the weight of the probabilities with change
+ since we are given that the frog may not hop onto a wall.
+\end_layout
+
+\begin_layout Section*
+Excerise 29
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=x,Y=y)=P(Y=y|X=x)*P(X=x)=\left(\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)p^{y}(1-p)^{x-y}\right)*\frac{1}{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Excerise 30
+\end_layout
+
+\begin_layout Subsection*
+Part A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=6|X=6)=0.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=3|X=6)=0.25$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=5|X=6)=0.25$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Part B
+\end_layout
+
+\begin_layout Standard
+see code for part B of Exercise 30
+\end_layout
+
+\begin_layout Subsection*
+Part C
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(survival)=0.780697$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Excerise 31
+\end_layout
+
+\begin_layout Subsection*
+Part A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(N=n,X=x)=P(X=x|N=n)*P(N=n)=\left(\left(\begin{array}{c}
+n\\
+x
+\end{array}\right)p^{x}*(1-p)^{n-x}\right)*\frac{\lambda^{n}e^{-\lambda}}{n!}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Part B
+\end_layout
+
+\begin_layout Standard
+see code for part B of Exercise 30
+\end_layout
+
+\begin_layout Subsection*
+Part C
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E(N=n)=\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E(X=x|N=n)=\lambda*p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the simulation, one of the combinations I set was 
+\begin_inset Formula $\lambda=15$
+\end_inset
+
+ and 
+\begin_inset Formula $p=0.3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\therefore E(X=x|N=n)=15*0.3=4.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On average, my simulation was off from the the actual value by 
+\begin_inset Formula $0.002683333$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Excerise 32
+\end_layout
+
+\begin_layout Subsection*
+Part A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c=0.0006578947$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+for parts B and C please the comments in the code.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage{amscd, amssymb, amsmath, verbatim, setspace}
+\usepackage[left=1.0in, right=1.0in, top=1.0in, bottom=1.0in]{geometry}
+\usepackage{mathrsfs}
+\usepackage{listings}
+<<echo=FALSE>>=
+library(knitr)
+opts_knit$set(concordance=TRUE)
+opts_chunk$set(background="white", highlight=FALSE, fig.keep="high", out.width="0.33\\linewidth")
+@
+\begin{document}
+
+\begin{flushright}
+  Arif Ali\\
+  ANLY-511 Prob. Modeling \& Stat. Computing\\
+	Oct 29, 2015\\
+\end{flushright}
+
+\begin{center}
+  \LARGE\textbf{Homework \#7}
+\end{center}
+\section*{Problem 49}
+<<>>=
+data("chickwts")
+boxplot(weight~feed, data = chickwts)
+@
+The feed type with the biggest gain seems to be the Casein while horsebean seems to have the smallest gain in weight. The Casein has a much larger range, but it looks like the it has the highest median. Linseed and soybean seem to have around the saame weight gain. While soybean as slightly higher weight gain, the quantiles seem very close.
+\section*{Problem 50}
+\subsection*{Part A}
+<<>>=
+setwd("~/Dropbox/School/Georgetown/Analytics 511 Fall 2015/ChiharaHesterberg/")
+GSS2006 = read.csv("GSS2006.csv")
+table(GSS2006$DeathPenalty, GSS2006$Region)
+@
+The death penalty is strongely favored in South Atlantic and South Central regions. Pacific and New England has significiantly less support for the death penalty. Overall, it looks like most people support the death penalty by a 2:1 ratio. There are so many things I could say regarding cultural differences that might lead to this.   
+\subsection*{Part B}
+<<>>=
+table(GSS2006$Marijuana, GSS2006$Region)
+@
+Mountain, New England, and the Pacific seem to have the strongest amount of support for legalizing. South Central and South Atlantic seem not as much in favor. Nationally, it's not a clearly Not legal as with the death penalty.
+\subsection*{Part C}
+<<>>=
+table(GSS2006$Marijuana, GSS2006$DeathPenalty)
+@
+
+Areas that favor legalization seem to not as strongly favor the death penalty mainly New England, and the Pacific. The Mid-Atlantic and South Atlantic seems to be holding the same ratio in both situations. South Cental has a differing ratio but opposing the death penalty and legalizing as the losing choices. 
+\section*{Problem 51}
+<<>>=
+x0 = function(n){
+  return(qnorm(.95, 0, 1/sqrt(n)))
+}
+x0(20)
+@
+\section*{Problem 52}
+<<>>=
+p0 = function(x0, n){
+  return(pnorm(x0, 0, 1/sqrt(n), lower.tail = F))
+}
+p0(.4, 20)
+@
+
+\section*{Problem 53}
+<<>>=
+
+power_test = function(ua, n, x0){
+  pnorm(x0, ua, 1/sqrt(n), lower.tail = F)
+}
+power_test(.2,20,.5)
+
+power_test(1,20,.5)
+
+@
+
+\section*{Problem 54}
+\subsection*{Part A}
+The distribution of $\bar(x)$ is $N(1, (\sqrt(\frac{8}{15}))^2)$
+\subsection*{Part B}
+<<>>=
+pnorm(0.3, 1, sqrt(8/15), lower.tail = F)
+pnorm(1.1, 1, sqrt(8/15), lower.tail = F)
+pnorm(2.1, 1, sqrt(8/15), lower.tail = F)
+@
+\subsection*{Part C}
+<<>>=
+xbar = replicate(10000, pnorm(mean(rnorm(15, 1, sqrt(8))),1 , sqrt(8/15), lower.tail = F))
+hist(xbar)
+plot.ecdf(xbar)
+# From both the ecdf and the histogram, the distribution of xbar under the null  
+# hypothesis is uniform from a source. The idea that I have behind why the p values 
+# is a uniform distribution is to be able to equally value each point's rejection area.  
+# https://shihho.wordpress.com/2012/11/27/pvalue_distribution/, 
+# the following is a proof from this wordpress of why that is possible.
+@
+Let $z=F(t)$
+
+$P(X\geq t)=P(F(X)\geq F(t))=P(F(X)\geq z)$
+$\implies 1-P(F(X)<z)=1-z$
+
+$\therefore 1-P(F(X)<z)=1-z$
+
+$z\in [0,1]$
+
+$z = \int^{z}_{0} f(z') dz'\implies f(z)=1$ So z is uniform.
+
+\section*{Problem 55}
+
+The first part is not the permutation test, I wanted to calculate the actual p-value, so the following is the Chi-Square with 38 degrees of freedom.
+<<>>=
+setwd("~/Dropbox/School/Georgetown/Analytics 511 Fall 2015/ChiharaHesterberg/")
+lottery = read.csv("Lottery.csv")
+C = sum((table(lottery$Win)-500/39)^2/(500/39))
+pchisq(C, 38, lower.tail = F)
+@
+Since $0.669616 > 0.05$, the null hypothesis continues to holds.
+
+This is the permutation test. 
+<<>>=
+setwd("~/Dropbox/School/Georgetown/Analytics 511 Fall 2015/ChiharaHesterberg/")
+lottery = read.csv("Lottery.csv")
+lottonumbers = table(lottery)
+expected <- mean(lottonumbers)
+
+lottoX2 = function(x){return(sum((x - expected)^2/expected))}
+lottoX2(lottonumbers)
+
+X2 = sum((lottonumbers - expected)^2/expected)
+
+sim <- replicate(10000, lottoX2(rmultinom(1,500,rep(1/39,39))))
+
+mean(sim > X2)
+@
+Once again, the $p-value > 0.05$, the null hypothesis probably holds.
+\section*{Problem 56}
+<<>>=
+setwd("~/Dropbox/School/Georgetown/Analytics 511 Fall 2015/ChiharaHesterberg/")
+titanic = read.csv("Titanic.csv")
+observed = (mean(titanic$Age[titanic$Survived==1]) - mean(titanic$Age[titanic$Survived==0]))
+
+N = 10^4-1 #Value from book
+result = numeric(N)
+for(i in 1:N){
+  Survival.permuted = sample(titanic$Age, replace = F)
+  result[i] = (mean(Survival.permuted[titanic$Survived==1]) 
+               - mean(Survival.permuted[titanic$Survived==0]))
+}
+(sum(result < observed)+1)/(N+1)*2
+@
+The p-value is significiantly less than 0.05; therefore the null hypothesis is significiantly less likely to hold; therefore, we reject it. The p-value must by multipled by two since this is a two sided test.
+\end{document}

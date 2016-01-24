@@ -1,0 +1,99 @@
+%% LyX 2.0.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1cm}
+\usepackage{babel}
+\begin{document}
+\begin{abstract}
+Please Note that all plots are located after the written up solutions
+before the R code. Due to the new Mac Software, I can't directly create
+PDF for tex.
+\end{abstract}
+
+\title{Analytics 511 HW 5}
+
+
+\author{Arif Ali}
+
+\maketitle
+
+\section*{Exercise 33}
+
+Thh ECDF plot looks kinda of like a log plot going from 0 to 60, with
+0 to 60 representing the minute mark on the hour. The average value
+of $W_{a}$ is around 10.
+
+
+\section*{Exercise 34}
+
+The peak of the histogram is around the value of 1. The histogram
+also has a tail towards the right hand side
+
+
+\section*{Exercise 35}
+
+I was interested in learning about the age rendering website that
+guessed the age of a person based on an image of a person's face shown
+in office hours. I was very surprised how the demo became so viral
+in Turkey. He really drives home the idea of presenting machine learning
+concepts to the layman. I'm surprised that it took 7 days to reach
+50 million users via this method. However, it does make sense, since
+it was a simple idea. I was surprised that people would share the
+website when results were wrong. The tips for how to look younfer
+was particularily amusing, I plan to wear contacts and shave more
+often.
+
+The tips for dealing with big data were particularity informative,
+such as how more effective building in the cloud really in.
+
+
+\section*{Exercise 36}
+
+Based on the qqnorm plot, I'm inclined to say that Z has a normal
+distribution. The Mean calculated was approximately 0.739 and I calculated
+the standard deviation two different ways, the built in method gave
+an SD of 0.897021 whereas my calculated, modeling the actual formula,
+was 0.7818569.
+
+
+\section*{Exercise 37}
+
+$E(Y|X)=E(aX+b+Z|X)=E(aX|X)+E(b)+E(Z)=aE(X|X)+b+0=aX+b$
+
+
+\section*{Exercise 38}
+
+
+\subsection*{Part A}
+
+Since is an event the a point $x\in R$ is accepted, then $U<\frac{l(x)}{M}$,
+so X = x, thus $P(Y=x|A)=P(X=x)$
+
+
+\subsection*{Part B}
+
+$P(A|Y=x)=\frac{l(x)}{M}$
+
+
+\subsection*{Part C}
+
+$P(A)=\sum_{x\in R}P(A|Y=x)*P(Y=x)=\frac{\sum_{x\in R}l(x)}{M}*\frac{1}{N}=\frac{c}{MN}$
+
+
+\subsection*{Part D}
+
+$P(X=x)=P(Y=x|A)=\frac{P(Y=x\&A)}{P(A)}=\frac{P(A|Y=x)*P(Y=x)}{P(A)}=\frac{\frac{l(x)}{M}*\frac{1}{N}}{\frac{C}{MN}}=\frac{l(x)}{c}=p(x)$
+
+
+\section*{Exercise 40}
+
+
+\subsection*{Part 2}
+
+$P(X=1|Y=y)=\frac{P(X=1\&Y=y)}{P(Y=y)}=\frac{P(Y=y|X=1)*P(X=1)}{P(Y=y|X=1)*P(X=1)+P(Y=y|X=2)*P(X=2)}=\frac{w_{1}p_{1}(y)}{w_{1}p_{1}(y)+w_{2}p_{2}(y)}$
+
+$P(X=2|Y=y)=\frac{P(X=2\&Y=y)}{P(Y=y)}=\frac{P(Y=y|X=2)*P(X=2)}{P(Y=y|X=1)*P(X=1)+P(Y=y|X=2)*P(X=2)}=\frac{w_{2}p_{2}(y)}{w_{1}p_{1}(y)+w_{2}p_{2}(y)}$
+\end{document}

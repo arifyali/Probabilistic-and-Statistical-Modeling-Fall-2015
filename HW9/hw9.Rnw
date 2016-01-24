@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{amscd, amssymb, amsmath, verbatim, setspace}
+\usepackage[left=1.0in, right=1.0in, top=1.0in, bottom=1.0in]{geometry}
+\usepackage{mathrsfs}
+\usepackage{listings}
+<<echo=FALSE>>=
+library(knitr)
+opts_knit$set(concordance=TRUE)
+opts_chunk$set(background="white", highlight=FALSE, fig.keep="high", out.width="0.33\\linewidth")
+@
+\begin{document}
+\begin{flushright}
+  Arif Ali\\
+  ANLY-511 Prob. Modeling \& Stat. Computing\\
+	Nov 20, 2015\\
+\end{flushright}
+
+\begin{center}
+  \LARGE\textbf{Homework \#9}
+\end{center}
+\section*{Exercise 65}
+<<>>=
+set.seed(1212331312)
+Titanic = read.csv("~/Dropbox/School/Georgetown/Analytics 511 Fall 2015/ChiharaHesterberg/Titanic.csv")
+Titanic_dead = Titanic$Age[Titanic$Survived==0]
+Titanic_alive = Titanic$Age[Titanic$Survived==1]
+
+bootstrap_Titanic_dead = replicate(10000, median(sample(Titanic_dead, length(Titanic_dead), replace = T)))
+bootstrap_Titanic_alive = replicate(10000, median(sample(Titanic_alive, length(Titanic_alive), replace = T)))
+
+quantile(bootstrap_Titanic_alive - 
+           bootstrap_Titanic_dead, 
+         c(0.05, 0.95))
+@
+I created a $90\%$ confidence interval in order to see if 0 is within the interval. Based on the confidence interval, I'm $90\%$ confident that the difference between the bootstrap medians is betwwen -4 and 1.
+
+\section*{Exercise 66}
+<<>>=
+loglikeli.exp = function(lambda,x){log(lambda^(length(x))*exp(-lambda*sum(x)))}
+# Note: by log properties this could alos have been length(x)*log(lambda) - lambda*sum(x)
+t = seq(.01,5,by = .01)
+y = c()
+x1 <- rexp(5,rate = 2)
+for (j in 1:500) y[j] <- loglikeli.exp(t[j],x1)
+plot(t,y, xlab = 'lambda', ylab = 'likelihood')
+
+t[y==max(y)]
+@
+It's interesting to see that the maximum value is actually occuring before the value of, around the value of 2, but never exactly at. Please note, I did not use 
+\section*{Exercise 70}
+<<>>=
+set.seed(301323)
+likelihood.cauchy = function(x, theta){
+  return((prod(pi*(1+(x-theta)^2)))^-1)
+}
+
+t = seq(-30,30,by = .01)
+y = c()
+x1 <- rcauchy(4)
+for (j in 1:length(t)) y[j] <- likelihood.cauchy(x1,t[j])
+plot(t,y, xlab = 'theta', ylab = 'likelihood')
+
+x1 <- rcauchy(2)
+for (j in 1:length(t)) y[j] <- likelihood.cauchy(x1,t[j])
+plot(t,y, xlab = 'theta', ylab = 'likelihood')
+@
+At $n=10$, it seems like that there is always one local maximum values. At $n=4$, there two local maximums can be observed a few (but not a majority of) times; It didn't occur at the set seed. When lowering n to 2, the number of maximums seems to be greater than 1 at a more frequent rate, as observed by the graph. Looking at the varying sample sizes, it seems clear that in order to best fine tune a MLE value, we should increase the sample size.   
+\section*{Exercise 71}
+<<>>=
+rcauchy.fun = function(n){
+  x1 <- rcauchy(n)
+  return(
+    c(abs(mean(x1, trim = 0.1)),
+             abs(median(x1))))
+}
+sample.sizes = c(10,20,40,100)
+
+ab = matrix(nrow = length(sample.sizes), ncol = 2)
+for(n in 1:length(sample.sizes)){
+    print(paste0(c("The size of sample is",n)))
+    aa = t(replicate(10000, rcauchy.fun(sample.sizes[n])))
+    ab[n, 1] = var(aa[,1])
+    ab[n, 2] = var(aa[,2])
+}
+ab
+@
+For each of the sample sizes the variance median is more smaller compared to the variance of the trimmed mean. However, as the sample size increases the variance of the median decreases. Thus, the efficiency seems to be dependent in relation to size. As size goes up, the variance of the median goes down, meaning that efficiency is increasing.
+
+\section*{Additional Exercises}
+Please see next page
+\end{document}

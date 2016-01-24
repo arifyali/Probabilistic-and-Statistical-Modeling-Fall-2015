@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amscd, amssymb, amsmath, verbatim, setspace}
+\usepackage[left=1.0in, right=1.0in, top=1.0in, bottom=1.0in]{geometry}
+\usepackage{mathrsfs}
+\usepackage{listings}
+<<echo=FALSE>>=
+library(knitr)
+opts_knit$set(concordance=TRUE)
+opts_chunk$set(background="white", highlight=FALSE, fig.keep="high", out.width="0.33\\linewidth")
+@
+\begin{document}
+\begin{flushright}
+  Arif Ali\\
+  ANLY-511 HW3\\
+  September 30, 2015\\
+\end{flushright}
+\begin{center}
+\end{center}
+\section*{Exercise 17}
+<<>>=
+X = rbeta(10000, .5, .8)
+EX = mean(X)
+EX
+
+sd(X) #Note: built sd factors in (N-1)/N coeffient
+
+sdX = sqrt(mean(X^2)-EX^2)
+sdX
+
+Ex_.333 = mean(X^(-1/3))
+Ex_.333
+@
+\section*{Exercise 18}
+<<>>=
+EsqrtX = replicate(1000, mean(sqrt(rbeta(10000, .5, .8))))
+mean((EsqrtX))
+sd(EsqrtX)
+
+rep(mean((EsqrtX)), times = 2) + 4*c(-sd(EsqrtX), sd(EsqrtX))
+@
+Based on the following simulation, the range in which $E(\sqrt{X})$ is between 0.5316151 and 0.5558636. The endpoints range were
+determined by looking at the values that were 4 standard deviations ($\frac{N-1}{N}$ correction from R) from the mean. Thus, the
+approximate of $E(\sqrt{X})$ has a confidence interval of greater than 99.9 percent.  
+\section*{Exercise 19}
+<<>>=
+X = runif(25000)
+Y = runif(25000)
+Z = X[Y<=(sin(2*pi*X))^2]
+hist(Z)
+@
+The histogram of Z takes on a shape that have to peaks. It looks like two normal distribution histograms side by side. The peaks on both of these normal distribtuion like instances look to be approximately the same
+\section*{Exercise 20}
+\subsection*{a}
+<<>>=
+sensitivity = 0.99/(0.99+0.01)
+sensitivity
+
+specificity = 0.99/(0.99+0.02)
+specificity
+@
+\subsection*{b}
+
+<<>>=
+(0.99/500)/((0.99/500)+0.02*499/500)
+@
+\section*{Exercise 21}
+Please see next page.
+\section*{Exercise 22}
+<<>>=
+aBunchOfCauchyDistributions = replicate(1000, rcauchy(1000))
+
+meanOfABunchOfCauchyDistributions = rowSums(aBunchOfCauchyDistributions)/1000
+
+par(mfrow=c(3, 2))
+
+Fx = pcauchy(meanOfABunchOfCauchyDistributions)
+plot(ecdf(Fx), main = "Mean where N = 1000")
+
+for(i in sample(1:1000, 5)){
+Fx = pcauchy(aBunchOfCauchyDistributions[,i])
+plot(ecdf(Fx), main = c("Cauchy column:",i)) 
+}
+
+aBunchOfCauchyDistributions = replicate(500, rcauchy(1000))
+
+meanOfABunchOfCauchyDistributions = rowSums(aBunchOfCauchyDistributions)/500
+
+par(mfrow=c(3, 2))
+
+Fx = pcauchy(meanOfABunchOfCauchyDistributions)
+plot(ecdf(Fx), main = "Mean where N = 500")
+
+for(i in sample(1:500, 5)){
+Fx = pcauchy(aBunchOfCauchyDistributions[,i])
+plot(ecdf(Fx), main = c("Cauchy column:",i)) 
+}
+@
+Following the same method used in the previous homework with respect to the similarities of exponential distributions with respect to uniform distributions. I used the same method (ecdf) to compare the mean of N cauchy distributions (N being either 1000 or 500) and please note how the graph of the means are near identical to 5 different cauchy distributions. they are a straight line over the same x values.
+
+
+Please see next page for the remaining problems (21,23, and 24)
+\end{document}
